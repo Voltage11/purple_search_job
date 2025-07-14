@@ -51,7 +51,7 @@ func (r *VacancyRepository) addVacancy(form VacancyCreateForm) error {
 	args := pgx.NamedArgs{
 		"email": form.Email,
 		"role": form.Role,
-		"company": form.Salary,
+		"company": form.Company,
 		"salary": form.Salary,
 		"type": form.Type,
 		"location": form.Location,
