@@ -3,6 +3,7 @@ package main
 import (
 	"lesson/config"
 	"lesson/internal/home"
+	"lesson/internal/users"
 	"lesson/internal/vacancy"
 	"lesson/pkg/database"
 	"lesson/pkg/logger"
@@ -34,11 +35,13 @@ func main() {
 
 	// Repositories
 	vacancyRepo := vacancy.NewVacancyRepository(dbPool, customLogger)
+	userRepo := users.NewUserRepository(dbPool, customLogger)
 
 
 	// Handler
 	home.NewHadnler(app, customLogger, vacancyRepo)
 	vacancy.NewHadnler(app, customLogger, vacancyRepo)
+	users.NewHadnler(app, customLogger, userRepo)
 
 	app.Listen(":3000")
 }
