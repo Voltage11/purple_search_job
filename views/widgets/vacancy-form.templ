@@ -1,0 +1,111 @@
+package widgets
+
+import "lesson/views/components"
+
+templ VacancyForm(){
+    @VacancyFormStyle()
+
+    <div class="vacancy-form" hx-ext="response-targets">
+        @components.Title2("Опубликовать вакансию", true)
+        <div id="vacansy-result"> </div>
+        <p class="vacancy-form__text">Введите все необходимые данные для публикации</p>
+        <form hx-post="/vacancy" 
+              hx-trigger="submit"
+              hx-target="#vacansy-result"
+              hx-target-error="#vacansy-result"
+              hx-swap="innerHTML swap:1s"
+              hx-on::after-request="if(event.detail.successful) this.reset()"
+        >
+            <div class="vacancy-form__inputs">
+                @components.Input(components.InputProps{
+                    Name: "role",
+                    Placeholder: "Должность",
+                })
+                @components.Input(components.InputProps{
+                    Name: "company",
+                    Placeholder: "Название компании",
+                })
+                @components.Input(components.InputProps{
+                    Name: "type",
+                    Placeholder: "Сфера компании",
+                })
+                @components.Input(components.InputProps{
+                    Name: "salary",
+                    Placeholder: "Заработная плата",
+                })
+                @components.Input(components.InputProps{
+                    Name: "location",
+                    Placeholder: "Расположение",
+                })
+                @components.Input(components.InputProps{
+                    Name: "email",
+                    Placeholder: "Контактный email",
+                })
+            </div>
+            @components.SubmitButton(){
+                <div class="vacancy-form__submin">Опубликовать вакансию</div>
+                <div class="vacancy-form__loader"></div>
+            }
+        </form>
+    </div>
+}
+
+templ VacancyFormStyle(){
+    <style>
+        .vacancy-form {
+            max-width: 890px;
+            width: 100%;
+        }
+        .vacancy-form form{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        .vacancy-form__inputs {
+            width: 100%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px 24px;
+            margin-bottom: 30px;
+        }
+        .vacancy-form__text{
+            overflow: hidden;
+            text-align: center;
+            font-size: 16px;
+            color: var(--color-black);
+            margin-bottom: 60px;
+        }
+        .vacancy-form__loader {
+            display: none;
+        }
+        .htmx-request .vacancy-form__loader {
+            display: block;
+            width: 48px;
+            height: 48px;
+            border: 5px solid #FFF;
+            border-bottom-color: transparent;
+            border-radius: 50%;
+            display: inline-block;
+            box-sizing: border-box;
+            animation: rotation 1s linear infinite;
+            }
+
+            @keyframes rotation {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        } 
+
+        .vacancy-form__submin{
+            display: block;
+        }
+        .htmx-request .vacancy-form__submin {
+            display: none;
+        }
+    </style>
+    
+}
