@@ -35,7 +35,7 @@ func Menu() templ.Component {
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<div class=\"menu\"><img src=\"/public/images/logo.svg\"><div class=\"menu__right\"><a class=\"menu__right-link\">Войти</a>")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<div class=\"menu\"><a href=\"/\"><img src=\"/public/images/logo.svg\"></a><div class=\"menu__right\"><a class=\"menu__right-link\" href=\"/login\">Войти</a>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -90,7 +90,7 @@ func MenuStyle() templ.Component {
 			templ_7745c5c3_Var3 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 4, "<style>\r\n        .menu{\r\n            display: flex;\r\n            flex-direction: row;\r\n            justify-content: space-between;\r\n            padding: 20px 0;\r\n            max-width: 1290px;\r\n            align-items: center;\r\n            width: 100%;\r\n        }\r\n        .menu__logo {\r\n\r\n        }\r\n        .menu__right{\r\n            display: flex;\r\n            gap: 20px;\r\n            align-items: center;\r\n        }\r\n        .menu__right-link{\r\n            text-decoration: none;\r\n            color: var(--color-white);\r\n            font-size: 16px;\r\n            cursor: pointer;\r\n        }\r\n        .menu__right-link:hover{\r\n            color: #9f9f9f;    \r\n        }\r\n    </style>")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 4, "<style>\r\n        .menu{\r\n\r\n            display: flex;\r\n            flex-direction: row;\r\n            justify-content: space-between;\r\n            padding: 20px 0;\r\n            max-width: 1290px;\r\n            align-items: center;\r\n            width: 100%;\r\n            margin-bottom: 100px;\r\n            \r\n        }\r\n        .menu__logo {\r\n\r\n        }\r\n        .menu__right{\r\n            display: flex;\r\n            gap: 20px;\r\n            align-items: center;\r\n        }\r\n        .menu__right-link{\r\n            text-decoration: none;\r\n            color: var(--color-white);\r\n            font-size: 16px;\r\n            cursor: pointer;\r\n        }\r\n        .menu__right-link:hover{\r\n            color: #9f9f9f;    \r\n        }\r\n    </style>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}

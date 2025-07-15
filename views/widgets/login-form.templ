@@ -1,0 +1,45 @@
+package widgets
+
+import "lesson/views/components"
+
+templ LoginForm() {
+	@LoginFormStyle()
+	<div id="login-result"> </div>
+	<form
+		hx-ext="response-targets"
+		hx-post="/api/login"
+		hx-trigger="submit"
+		class="login-form"
+		hx-target="#login-result"
+		hx-target-error="#login-result"
+		hx-swap="innerHTML swap:1s"
+	>
+		@components.Input(components.InputProps{
+			Name: "email",
+			Placeholder: "Email",
+		})
+		@components.Input(components.InputProps{
+			Name: "password",
+			Placeholder: "Пароль",
+			Type: "password",
+		})
+		@components.SubmitButton() {
+			<div>Войти</div>
+		}
+	</form>
+}
+
+templ LoginFormStyle() {
+	<style>
+	#login-result {
+		margin-bottom: 10px;
+	}
+	.login-form {
+		display: flex;
+		flex-direction: column;
+		gap: 30px;
+		width: 100%;
+		max-width: 520px;
+	}
+	</style>
+}

@@ -53,7 +53,7 @@ func (h *UserHandler) createUser(c *fiber.Ctx) error {
 		component = components.Notification("Произошла ошибка добавления пользователя", components.NotificationFail)
 		return tadapter.Render(c, component, http.StatusBadRequest)
 	}
-	component = components.Notification(fmt.Sprintf("Пользователь создан: %s", email), components.NotificationSuccsess)
+	component = components.Notification(fmt.Sprintf("Пользователь создан: %s", email), components.NotificationSuccess)
 	return tadapter.Render(c, component, http.StatusOK)
 
 }
