@@ -11,8 +11,8 @@ import templruntime "github.com/a-h/templ/runtime"
 type NotificationStatus string
 
 const (
-	NotificationSuccsess NotificationStatus = "succsess"
-	NotificationFail     NotificationStatus = "fail"
+	NotificationSuccess NotificationStatus = "success"
+	NotificationFail    NotificationStatus = "fail"
 )
 
 func Notification(message string, status NotificationStatus) templ.Component {
@@ -41,8 +41,9 @@ func Notification(message string, status NotificationStatus) templ.Component {
 			return templ_7745c5c3_Err
 		}
 		var templ_7745c5c3_Var2 = []any{"notification",
-			templ.KV("notification_success", status == NotificationSuccsess),
-			templ.KV("notification_fail", status == NotificationFail)}
+			templ.KV("notification_success", status == NotificationSuccess),
+			templ.KV("notification_fail", status == NotificationFail),
+		}
 		templ_7745c5c3_Err = templ.RenderCSSItems(ctx, templ_7745c5c3_Buffer, templ_7745c5c3_Var2...)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
@@ -67,7 +68,7 @@ func Notification(message string, status NotificationStatus) templ.Component {
 		var templ_7745c5c3_Var4 string
 		templ_7745c5c3_Var4, templ_7745c5c3_Err = templ.JoinStringErrs(message)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/components/notification.templ`, Line: 17, Col: 14}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/components/notification.templ`, Line: 16, Col: 11}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var4))
 		if templ_7745c5c3_Err != nil {
@@ -102,7 +103,7 @@ func NotificationStyle() templ.Component {
 			templ_7745c5c3_Var5 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 4, "<style>\r\n        .notification{\r\n            width: 100%;\r\n            padding: 30px;\r\n            color: var(--color-white);\r\n            font-size: 16px;\r\n        }\r\n        .notification_success{\r\n            background-color: #31b4a3;\r\n        }\r\n        .notification_fail {\r\n            background-color: #fc3232;\r\n        }\r\n        .htmx-swapping .notification{\r\n            opacity: 0;\r\n            transition: opacity 0.5s ease-out;\r\n        }\r\n    </style>")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 4, "<style>\r\n\t.notification {\r\n\t\twidth: 100%;\r\n\t\tpadding: 30px;\r\n\t\tcolor: var(--color-white);\r\n\t\tfont-size: 16px;\r\n\t}\r\n\t.notification_success {\r\n\t\tbackground-color: #31b4a3;\r\n\t}\r\n\t.notification_fail {\r\n\t\tbackground-color: #b43133;\r\n\t}\r\n\t.htmx-swapping .notification {\r\n\t\topacity: 0;\r\n\t\ttransition: opacity 1s ease-out;\r\n\t}\r\n\t</style>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}

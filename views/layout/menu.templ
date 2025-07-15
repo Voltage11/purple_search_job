@@ -6,9 +6,11 @@ templ Menu() {
     @MenuStyle()
     
     <div class="menu">
-        <img src="/public/images/logo.svg"/>
+        <a href="/">
+            <img src="/public/images/logo.svg"/>
+        </a>
         <div class="menu__right">
-            <a class="menu__right-link">Войти</a>
+            <a class="menu__right-link" href="/login">Войти</a>
             @components.LinkButton("/register"){
                 <span>Зарегистрироваться</span>
             }
@@ -19,6 +21,7 @@ templ Menu() {
 templ MenuStyle() {
     <style>
         .menu{
+
             display: flex;
             flex-direction: row;
             justify-content: space-between;
@@ -26,6 +29,8 @@ templ MenuStyle() {
             max-width: 1290px;
             align-items: center;
             width: 100%;
+            margin-bottom: 100px;
+            
         }
         .menu__logo {
 

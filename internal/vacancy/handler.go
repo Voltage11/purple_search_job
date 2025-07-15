@@ -58,7 +58,7 @@ func (h *VacancyHandler) createVacancy(c *fiber.Ctx) error {
 		component = components.Notification("Произошла ошибка добавления вакансии", components.NotificationFail)
 		return tadapter.Render(c, component, http.StatusBadRequest)
 	}
-	component = components.Notification("Вакансия создана", components.NotificationSuccsess)
+	component = components.Notification("Вакансия создана", components.NotificationSuccess)
 	return tadapter.Render(c, component, http.StatusOK)
 
 }
